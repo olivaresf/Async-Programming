@@ -1,11 +1,11 @@
 import Foundation
 
-let names: [String] = [<# Insert 4 names #>]
+let lowercaseNames: [String] = [<# Insert 4 names #>]
 
-func transform(givenStrings: [String], <#Declare a closure that accepts a String and returns a String#>) -> [String] {
+func transform(originalStrings: [String], <#Declare a closure that accepts a String and returns a String#>) -> [String] {
     
     var transformedStrings = [String]()
-    for singleString in strings {
+    for originalString in originalStrings {
         let transformedString = <#Pass singleString to the closure#>
         transformedStrings.append(transformedString)
     }
@@ -13,7 +13,7 @@ func transform(givenStrings: [String], <#Declare a closure that accepts a String
     return transformedStrings
 }
 
-let capitalizedNames = transform(strings: names, <#Declare a closure#>)
+let capitalizedNames = transform(originalStrings: lowercaseNames, <#Declare a closure#>)
 print(capitalizedNames)
 
 
