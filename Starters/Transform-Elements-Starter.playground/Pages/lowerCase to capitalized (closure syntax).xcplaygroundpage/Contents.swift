@@ -1,32 +1,50 @@
 import Foundation
 
 func transform(originalStrings: [String],
-               closure: <#Declare a closure that accepts a String and returns a String#>) -> [String] {
+               closure: (String) -> String) -> [String] {
     
     var transformedStrings = [String]()
     for originalString in originalStrings {
-        let transformedString = <#Pass singleString to the closure#>
+        let transformedString = closure(originalString)
         transformedStrings.append(transformedString)
     }
     
     return transformedStrings
 }
 
-let lowercaseNames: [String] = [<# Insert 4 names #>]
-let capitalizedNames = transform(originalStrings: lowercaseNames, closure: <#Declare a closure#>)
-print(capitalizedNames)
+let lowercaseNames: [String] = ["ryan", "allison", "amer", "alvaro"]
 
+// Full Syntax
+let capitalizedNames = transform(originalStrings: lowercaseNames, closure: { (givenString: String) -> String in
+    return givenString.capitalized
+})
 
-<#Full Syntax#>
+// Trailing Closure Syntax
+let capitalizedNames1 = transform(originalStrings: lowercaseNames) { (givenString: String) -> String in
+    return givenString.capitalized
+}
 
-<#Trailing Closure Syntax#>
+// Inferring input type
+let capitalizedNames2 = transform(originalStrings: lowercaseNames) { givenString -> String in
+    return givenString.capitalized
+}
 
-<#Inferring input type#>
+// Inferring output type
+let capitalizedNames3 = transform(originalStrings: lowercaseNames) { givenString in
+    return givenString.capitalized
+}
 
-<#Inferring output type#>
+// Shorthand argument name
+let capitalizedNames4 = transform(originalStrings: lowercaseNames) {
+    return $0.capitalized
+}
 
-<#Shorthand argument name#>
+// Omitting return keyword
+let capitalizedNames5 = transform(originalStrings: lowercaseNames) { $0.capitalized }
 
-<#Omitting return keyword#>
+// Keypaths - a way to access a property (let/var)
+// Example: [Employee] -> [String] // Strings represent the employee names
+// let employeeNames = employees.map(\.name)
+let capitalizedNames6 = lowercaseNames.map(\.capitalized)
 
-<#Keypaths#>
+// doSomething(key1: \.keypath1, key2: \.keypath2)
