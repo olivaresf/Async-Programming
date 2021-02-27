@@ -1,3 +1,5 @@
 *.xcuserstate
 .DS_Store
 *.key
+/GCD.key
+/GCD copy.key
