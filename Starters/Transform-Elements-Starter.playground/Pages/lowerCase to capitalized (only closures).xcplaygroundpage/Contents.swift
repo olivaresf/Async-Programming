@@ -1,17 +1,24 @@
 import Foundation
 
 func transform(originalStrings: [String],
-               closure: <#Declare a closure that accepts a String and returns a String#>) -> [String] {
+               closure: (String) -> String) -> [String] {
     
     var transformedStrings = [String]()
     for originalString in originalStrings {
-        let transformedString = <#Pass singleString to the closure#>
+        let transformedString = closure(originalString)
         transformedStrings.append(transformedString)
     }
     
     return transformedStrings
 }
 
-let lowercaseNames: [String] = [<# Insert 4 names #>]
-let capitalizedNames = transform(originalStrings: lowercaseNames, closure: <#Declare a closure#>)
+let lowercaseNames: [String] = ["ninjawt", "eugene", "karen", "ryan"]
+let capitalizedNames = transform(originalStrings: lowercaseNames, closure: { (givenString: String) -> String in
+    return givenString.capitalized
+})
 print(capitalizedNames)
+
+let upperCasedNames = transform(originalStrings: lowercaseNames, closure: { (givenString: String) -> String in
+    return givenString.uppercased()
+})
+print(upperCasedNames)
